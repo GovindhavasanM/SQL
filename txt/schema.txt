@@ -1,0 +1,42 @@
+CREATE DATABASE ecommerce;
+CREATE TABLE Customers(
+  CustomerID  INT AUTO_INCREMENT PRIMARY KEY,
+  Name VARCHAR(100),
+  Email VARCHAR(200),
+  Address VARCHAR(250)
+);
+INSERT INTO Customers(Name,Email,Address)
+VALUES
+('Govindhavasan','vasan@gmail.com','501,RVnagar,Orathanadu,Thanjavur-614625'),
+('Ramana','ramana@gmail.com','501,RVnagar,Orathanadu,Thanjavur-614625'),
+('Manivannan','mani@gmail.com','501,RVnagar,Orathanadu,Thanjavur-614625');
+CREATE TABLE Products(
+  ProductID INT AUTO_INCREMENT PRIMARY KEY,
+  CustomerID  INT ,
+  Product_name VARCHAR(100),
+  Price INT,
+  Description VARCHAR(1000),
+  FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+INSERT INTO Products(CustomerID,Product_name,Price,Description)
+VALUES(1,'watch',1400,'A analog wrist waatch'),
+(2,'Runningshoes',1600,'shoe that for runners with extra cusion to run for a long time '),
+(3,'sticker',130,'stickers to place on a laptops and fridges');
+CREATE TABLE Orders(
+   OrderID INT AUTO_INCREMENT PRIMARY KEY,
+   CustomerID INT,
+   ProductID INT,
+   Order_date DATE,
+   Total_amount INT,
+   FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+   FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
+INSERT INTO Orders(CustomerID,ProductID,Order_date,Total_amount)
+VALUES(1,1,'2024-11-20',1400),
+      (2,2,'2024-11-12',1600),
+       (3,3,'2024-11-8',130);
+ UPDATE Products 
+ SET Price=45.00
+ WHERE Product_name='sticker';
+ ALTER TABLE Products 
+ ADD  COLUMN Discount VARCHAR(10) DEFAULT '15%';

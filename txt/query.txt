@@ -1,0 +1,21 @@
+
+
+ SELECT Customers.Name as customer_name,Orders.Total_amount
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+///
+SELECT Product_name,Price FROM  Products
+ORDER BY Price DESC;
+///
+SELECT Customers.Name as customer_name,Products.Product_name
+FROM Products
+INNER JOIN Customers ON Customers.CustomerID=Products.CustomerID
+WHERE Product_name='watch';
+///
+SELECT * FROM Orders 
+WHERE Total_amount>150;
+///
+SELECT Customers.Name as customer_name,Orders.Order_date
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
+///
